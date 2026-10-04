@@ -1,7 +1,7 @@
 ## Interface: 30300
 ## Title: dG KillShot Notifier
 ## Notes: Lets people know you got a killshot.
-## Author: leech 
+## Author: Original linman0x90 https://github.com/linman0x90 modified by momomeomo https://github.com/momomeomo/dgks-KILLSHOT-fixed335
 ## Version: 3.3.5.113 
 ## OptionalDeps: Ace3, LibSink-2.0
 ## SavedVariables: dgksDB
