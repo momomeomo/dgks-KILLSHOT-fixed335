@@ -467,7 +467,7 @@ local defaults = {
 		ksemote = "has killed $v! Streak of $s!",
 		kstext = "$k killed $v!",
 		soundpack = "male", -- need this to check for available packs and create a drag down option
-		soundpath = "Interface\\AddOns\\dgks\\sounds\\",
+		soundpath = "Interface\\AddOns\\dgks\\sounds\\male\\",
 		doemote = true,
 		docombattext = true,
 		dobroadcasts = true,
@@ -476,8 +476,8 @@ local defaults = {
 		dosound = true,
 		dozonechange = true,
 		ksrank = {0, 2, 4, 6, 8, 10, 12},
-		kssound = {"ownage.wav", "killingspree.wav", "rampage.wav", "dominating.wav", "unstoppable.wav", "godlike.wav", "whickedsick.wav"},
-		kssoundM = {"doublekill.wav", "multikill.wav", "megakill.wav", "ultrakill.wav", "monsterkill.wav", "ludicrouskill.wav", "holyshit.wav"},
+		kssound = {"ownage.ogg", "killingspree.ogg", "rampage.ogg", "dominating.ogg", "unstoppable.ogg", "godlike.ogg", "whickedsick.ogg"},
+		kssoundM = {"doublekill.ogg", "multikill.ogg", "megakill.ogg", "ultrakill.ogg", "monsterkill.ogg", "ludicrouskill.ogg", "holyshit.ogg"},
 		kstextM = {"DOUBLEKILL!", "MULTIKILL!", "MEGAKILL!", "ULTRAKILL!!!", "MONSTERKILL!!!", "LUDICROUSKILL!!!", "H O L Y  S H I T!!!"},
 		killlog = {},
 		--Currently unused might be readded for dueling and ranged slot kills
@@ -724,33 +724,20 @@ function dgks:getSoundPack()
 end
 
 function dgks:setSoundPack(info, newsoundset)
-    if (newsoundset == "male") then
-        self.db.profile.soundpack = newsoundset;
-        self.db.profile.soundpath = "Interface\\AddOns\\dgks\\sounds\\";
-    elseif (newsoundset == "female") then
-        if (IsAddOnLoaded("dgks_female")) then
-            self.db.profile.soundpack = newsoundset;
-            self.db.profile.soundpath = "Interface\\AddOns\\dgks_female\\";
-        else 
-            message("That addon is not enabled");
-        end
-    elseif (newsoundset == "sexy") then
-        if (IsAddOnLoaded("dgks_sexy")) then
-            self.db.profile.soundpack = newsoundset;
-            self.db.profile.soundpath = "Interface\\AddOns\\dgks_sexy\\";
-        else 
-            message("That addon is not enabled");
-        end
-    elseif (newsoundset == "baby") then
-        if (IsAddOnLoaded("dgks_baby")) then
-            self.db.profile.soundpack = newsoundset;
-            self.db.profile.soundpath = "Interface\\AddOns\\dgks_baby\\";
-        else 
-            message("That addon is not enabled");
-        end
-    else
-        message("Error: That is not a valid option");
-    end
+	local soundPaths = {
+		male = "Interface\\AddOns\\dgks\\sounds\\male\\",
+		female = "Interface\\AddOns\\dgks\\sounds\\female\\",
+		sexy = "Interface\\AddOns\\dgks\\sounds\\sexy\\",
+		baby = "Interface\\AddOns\\dgks\\sounds\\baby\\"
+	}
+
+	local soundpath = soundPaths[newsoundset]
+	if soundpath then
+		self.db.profile.soundpack = newsoundset
+		self.db.profile.soundpath = soundpath
+	else
+		message("Error: That is not a valid option")
+	end
 end
 
 function dgks:GetMessageGroup()
