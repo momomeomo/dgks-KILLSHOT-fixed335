@@ -1,0 +1,20 @@
+## Interface: 30300
+## Title: dG KillShot Notifier
+## Notes: Lets people know you got a killshot.
+## Author: leech 
+## Version: 3.3.5.113 
+## OptionalDeps: Ace3, LibSink-2.0
+## SavedVariables: dgksDB
+## SavedVariablesPerCharacter: dgksDBPC
+## X-Embeds: Ace3, LibSink-2.0
+## X-Website: http://www.wowace.com
+## X-Category: Interface Enhancements
+## X-Curse-Packaged-Version: 3.3.5.113
+## X-Curse-Project-Name: dgks
+## X-Curse-Project-ID: dgks
+## X-Curse-Repository-ID: wow/dgks/mainline
+
+embeds.xml
+libs\AceDBOptions-3.0\AceDBOptions-3.0.lua
+
+dgks.lua
