@@ -65,7 +65,7 @@ local function giveGeneral()
 		args = {
 			dozonechange = {
 				type = 'toggle',
-				name = 'Clear Streaks on Zone Change',
+				name = 'Clears Current Streak on Zone Change',
 				get = function()
 					return dgks.db.profile.dozonechange
 				end,
@@ -531,9 +531,14 @@ function dgks:OnDisable()
 end
 
 function dgks:ZoneChangedHandler()
+	--	Calls a function that resets the combat log on every zone change
+	--	combat log has a known issue on 3.3.5 pservers that after a while the combat log completely stops functioning
+	--	even reloading does not fix the combat log
+	CombatLogClearEntries()
 	if (dgks.db.profile.dozonechange) then
 		killingstreak = 0;
 		deathstreak = 0;
+	
 	end
 end
 
